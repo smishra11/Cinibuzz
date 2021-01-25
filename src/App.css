@@ -1,14 +1,48 @@
+/*! FONT FOR NAV TITLE */
 @import url('https://fonts.googleapis.com/css2?family=Baloo+Bhai+2:wght@700&display=swap');
+
+/*! FONT FOR SEARCH TITLE */
+/* @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
 
 .nav_font {
   font-family: 'Baloo Bhai 2', cursive;
 }
+
 .nav_font > a {
   font-size: 35px !important;
   color: blueviolet !important;
 }
+
 .search_title {
-  font-size: 25px;
+  /* font-family: 'Lobster', cursive; */
+  font-family: 'Permanent Marker', cursive;
+  text-transform: capitalize;
+  font-size: 30px;
   text-align: center;
-  padding-top: 75px;
+  padding-top: 70px;
+  color: rgb(104, 57, 128);
+}
+
+.container_title {
+  font-family: 'Baloo Bhai 2', cursive;
+  margin-top: 3rem;
+  margin-left: -15px;
+}
+
+.movie > div > button:hover {
+  border-bottom: 4px solid blueviolet;
+  border-radius: 5px !important;
+  box-shadow: none !important;
+  color: grey;
+}
+.movie > div > button {
+  color: grey;
+}
+.active_btn {
+  font-weight: bold !important;
+  border-bottom: 4px solid blueviolet !important;
+  border-radius: 5px !important;
+  box-shadow: none !important;
+  color: black !important;
 }
