@@ -14,6 +14,12 @@
   color: blueviolet !important;
 }
 
+.search {
+  margin-top: 4rem;
+  background-color: #eee;
+  height: 250px;
+  border-radius: 0 0 5px 5px;
+}
 .search_title {
   /* font-family: 'Lobster', cursive; */
   font-family: 'Permanent Marker', cursive;
@@ -38,6 +44,7 @@
 }
 .movie > div > button {
   color: grey;
+  font-size: 14px;
 }
 .active_btn {
   font-weight: bold !important;
@@ -45,4 +52,44 @@
   border-radius: 5px !important;
   box-shadow: none !important;
   color: black !important;
+}
+
+.movie_score {
+  position: absolute;
+  bottom: 25px;
+  left: 45px;
+  color: rgb(225, 207, 243);
+  display: flex;
+  font-size: 14px;
+}
+.movie_score > p {
+  padding-top: 10px;
+  font-weight: bold;
+}
+.score_result {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  margin-left: 15px;
+  padding-bottom: 10px;
+  color: whitesmoke;
+  text-align: center;
+  font-weight: bold;
+  background-image: linear-gradient(
+    to right,
+    rgba(35, 88, 148, 0.76),
+    rgb(94, 233, 52)
+  );
+}
+.score_result > p {
+  padding-top: 10px;
+}
+
+.movie_title {
+  font-weight: bold;
+  font-size: 25px;
+}
+
+.font_14 {
+  font-size: 14px;
 }
