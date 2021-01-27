@@ -6,52 +6,47 @@ function Homepage() {
   return (
     <div>
       <div>
-        <nav className="nav_font navbar navbar-expand-lg navbar-light bg-light">
-          <a className="navbar-brand p-0" href="#/">
-            Cinibuzz
-          </a>
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#navbarText"
-            aria-controls="navbarText"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navbarText">
-            <ul
-              className="navbar-nav ml-auto mr-3"
-              style={{ fontSize: '18px' }}
+        <div style={{ position: 'fixed', width: '100%', top: 0, zIndex: 1 }}>
+          <nav className="nav_font navbar navbar-expand-lg navbar-light bg-light">
+            <a className="navbar-brand p-0" href="#/">
+              Cinibuzz
+            </a>
+            <button
+              className="navbar-toggler"
+              type="button"
+              data-toggle="collapse"
+              data-target="#navbarText"
+              aria-controls="navbarText"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
             >
-              <li className="nav-item ml-1">
-                <a className="nav-link" href="#/">
-                  Movies
-                </a>
-              </li>
-              <li className="nav-item ml-1">
-                <a className="nav-link" href="#/">
-                  TV Shows
-                </a>
-              </li>
-              <li className="nav-item ml-1">
-                <a className="nav-link" href="#/">
-                  Kids
-                </a>
-              </li>
-            </ul>
-          </div>
-        </nav>
-        <div
-          className="container"
-          style={{
-            backgroundColor: '#eee',
-            height: '250px',
-            borderRadius: '0 0 5px 5px',
-          }}
-        >
+              <span className="navbar-toggler-icon"></span>
+            </button>
+            <div className="collapse navbar-collapse" id="navbarText">
+              <ul
+                className="navbar-nav ml-auto mr-3"
+                style={{ fontSize: '18px' }}
+              >
+                <li className="nav-item ml-1">
+                  <a className="nav-link" href="#/">
+                    Movies
+                  </a>
+                </li>
+                <li className="nav-item ml-1">
+                  <a className="nav-link" href="#/">
+                    TV Shows
+                  </a>
+                </li>
+                <li className="nav-item ml-1">
+                  <a className="nav-link" href="#/">
+                    Kids
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+        <div className="container search">
           <p className="search_title">Find perfect movie for evening</p>
           <div className="d-flex">
             <div className="input-group flex-nowrap ml-5 mr-2">

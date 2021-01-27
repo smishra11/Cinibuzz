@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import MovieList from './MovieList';
 import axios from 'axios';
+import Spinner from '../common/spinner1.gif';
 
 function MovieContainer() {
   const [btnClicked, setBtnClicked] = useState('new_release');
   const [movieData, setMovieData] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
 
   const catagories = [
     {
@@ -49,18 +51,13 @@ function MovieContainer() {
     },
   ];
   useEffect(() => {
-    axios
-      .get(
-        `${process.env.REACT_APP_BASE_URL}/now_playing?api_key=${process.env.REACT_APP_API_KEY}`
-      )
-      .then((res) => {
-        setMovieData(res.data);
-        console.log(res.data);
-      })
-      .catch((err) => console.log(err));
+    setIsLoading(true);
+    newRelease();
+    setIsLoading(false);
   }, []);
 
   const newRelease = () => {
+    setIsLoading(true);
     axios
       .get(
         `${process.env.REACT_APP_BASE_URL}/now_playing?api_key=${process.env.REACT_APP_API_KEY}`
@@ -69,9 +66,11 @@ function MovieContainer() {
         setMovieData(res.data);
         console.log(res.data);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err.message));
+    setIsLoading(false);
   };
   const upcoming = () => {
+    setIsLoading(true);
     axios
       .get(
         `${process.env.REACT_APP_BASE_URL}/upcoming?api_key=${process.env.REACT_APP_API_KEY}`
@@ -80,9 +79,11 @@ function MovieContainer() {
         setMovieData(res.data);
         console.log(res.data);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err.message));
+    setIsLoading(false);
   };
   const action = () => {
+    setIsLoading(true);
     axios
       .get(
         `${process.env.REACT_APP_BASE_URL}/now_playing?api_key=${process.env.REACT_APP_API_KEY}`
@@ -91,9 +92,11 @@ function MovieContainer() {
         setMovieData(res.data);
         console.log(res.data);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err.message));
+    setIsLoading(false);
   };
   const comedy = () => {
+    setIsLoading(true);
     axios
       .get(
         `${process.env.REACT_APP_BASE_URL}/now_playing?api_key=${process.env.REACT_APP_API_KEY}`
@@ -102,9 +105,11 @@ function MovieContainer() {
         setMovieData(res.data);
         console.log(res.data);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err.message));
+    setIsLoading(false);
   };
   const crime = () => {
+    setIsLoading(true);
     axios
       .get(
         `${process.env.REACT_APP_BASE_URL}/now_playing?api_key=${process.env.REACT_APP_API_KEY}`
@@ -113,9 +118,11 @@ function MovieContainer() {
         setMovieData(res.data);
         console.log(res.data);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err.message));
+    setIsLoading(false);
   };
   const drama = () => {
+    setIsLoading(true);
     axios
       .get(
         `${process.env.REACT_APP_BASE_URL}/now_playing?api_key=${process.env.REACT_APP_API_KEY}`
@@ -124,9 +131,11 @@ function MovieContainer() {
         setMovieData(res.data);
         console.log(res.data);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err.message));
+    setIsLoading(false);
   };
   const thriller = () => {
+    setIsLoading(true);
     axios
       .get(
         `${process.env.REACT_APP_BASE_URL}/now_playing?api_key=${process.env.REACT_APP_API_KEY}`
@@ -135,9 +144,11 @@ function MovieContainer() {
         setMovieData(res.data);
         console.log(res.data);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err.message));
+    setIsLoading(false);
   };
   const sciFi = () => {
+    setIsLoading(true);
     axios
       .get(
         `${process.env.REACT_APP_BASE_URL}/now_playing?api_key=${process.env.REACT_APP_API_KEY}`
@@ -146,9 +157,11 @@ function MovieContainer() {
         setMovieData(res.data);
         console.log(res.data);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err.message));
+    setIsLoading(false);
   };
   const family = () => {
+    setIsLoading(true);
     axios
       .get(
         `${process.env.REACT_APP_BASE_URL}/now_playing?api_key=${process.env.REACT_APP_API_KEY}`
@@ -157,9 +170,11 @@ function MovieContainer() {
         setMovieData(res.data);
         console.log(res.data);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err.message));
+    setIsLoading(false);
   };
   const horror = () => {
+    setIsLoading(true);
     axios
       .get(
         `${process.env.REACT_APP_BASE_URL}/now_playing?api_key=${process.env.REACT_APP_API_KEY}`
@@ -168,7 +183,8 @@ function MovieContainer() {
         setMovieData(res.data);
         console.log(res.data);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err.message));
+    setIsLoading(false);
   };
 
   const handleClick = (key) => {
@@ -216,7 +232,15 @@ function MovieContainer() {
           ))}
         </div>
       </div>
-      <MovieList movieData={movieData} />
+      <div>
+        {isLoading ? (
+          <div className="d-flex justify-content-center">
+            <img src={Spinner} alt="spinner" />
+          </div>
+        ) : (
+          <MovieList movieData={movieData} />
+        )}
+      </div>
     </div>
   );
 }
