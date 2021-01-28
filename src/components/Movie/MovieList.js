@@ -6,9 +6,7 @@ function MovieList(props) {
   const history = useHistory();
 
   const handleMovieList = (id) => {
-    console.log(id);
     history.push({ pathname: `/movie_id:${id}` });
-    console.log('history', history);
   };
 
   return (

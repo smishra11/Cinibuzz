@@ -2,63 +2,210 @@ import React, { useState } from 'react';
 import Search from '../../assets/search.svg';
 import MovieContainer from '../Movie/MovieContainer';
 import axios from 'axios';
+import Navbar from '../common/Navbar';
 
 function Homepage() {
   const [inputChange, setInputChange] = useState('');
-  const [searchData, setSearchData] = useState({});
+  const [btnClicked, setBtnClicked] = useState('new_release');
+  const [movieData, setMovieData] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
 
   const handleSearch = () => {
-    console.log('searched');
     axios
       .get(
         `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&query=${inputChange}`
       )
-      .then((res) => setSearchData(res.data))
+      .then((res) => {
+        setMovieData(res.data);
+        setIsLoading(false);
+      })
       .catch((err) => console.log(err));
+  };
+  const catagories = [
+    {
+      key: 'new_release',
+      value: 'New Release',
+    },
+    {
+      key: 'upcoming',
+      value: 'Upcoming',
+    },
+    {
+      key: 'action',
+      value: 'Action',
+    },
+    {
+      key: 'comedy',
+      value: 'Comedy',
+    },
+    {
+      key: 'crime',
+      value: 'Crime',
+    },
+    {
+      key: 'drama',
+      value: 'Drama',
+    },
+    {
+      key: 'thriller',
+      value: 'Thriller',
+    },
+    {
+      key: 'sci_fi',
+      value: 'Sci-Fi',
+    },
+    {
+      key: 'family',
+      value: 'Family',
+    },
+    {
+      key: 'horror',
+      value: 'Horror',
+    },
+  ];
+
+  const newRelease = () => {
+    axios
+      .get(
+        `${process.env.REACT_APP_BASE_URL}/now_playing?api_key=${process.env.REACT_APP_API_KEY}`
+      )
+      .then((res) => {
+        setMovieData(res.data);
+        setIsLoading(false);
+      })
+      .catch((err) => console.log(err.message));
+  };
+  const upcoming = () => {
+    axios
+      .get(
+        `${process.env.REACT_APP_BASE_URL}/upcoming?api_key=${process.env.REACT_APP_API_KEY}`
+      )
+      .then((res) => {
+        setMovieData(res.data);
+        setIsLoading(false);
+      })
+      .catch((err) => console.log(err.message));
+  };
+  const action = () => {
+    axios
+      .get(
+        `${process.env.REACT_APP_BASE_URL}/now_playing?api_key=${process.env.REACT_APP_API_KEY}`
+      )
+      .then((res) => {
+        setMovieData(res.data);
+        setIsLoading(false);
+      })
+      .catch((err) => console.log(err.message));
+  };
+  const comedy = () => {
+    axios
+      .get(
+        `${process.env.REACT_APP_BASE_URL}/now_playing?api_key=${process.env.REACT_APP_API_KEY}`
+      )
+      .then((res) => {
+        setMovieData(res.data);
+        setIsLoading(false);
+      })
+      .catch((err) => console.log(err.message));
+  };
+  const crime = () => {
+    axios
+      .get(
+        `${process.env.REACT_APP_BASE_URL}/now_playing?api_key=${process.env.REACT_APP_API_KEY}`
+      )
+      .then((res) => {
+        setMovieData(res.data);
+        setIsLoading(false);
+      })
+      .catch((err) => console.log(err.message));
+  };
+  const drama = () => {
+    axios
+      .get(
+        `${process.env.REACT_APP_BASE_URL}/now_playing?api_key=${process.env.REACT_APP_API_KEY}`
+      )
+      .then((res) => {
+        setMovieData(res.data);
+        setIsLoading(false);
+      })
+      .catch((err) => console.log(err.message));
+  };
+  const thriller = () => {
+    axios
+      .get(
+        `${process.env.REACT_APP_BASE_URL}/now_playing?api_key=${process.env.REACT_APP_API_KEY}`
+      )
+      .then((res) => {
+        setMovieData(res.data);
+        setIsLoading(false);
+      })
+      .catch((err) => console.log(err.message));
+  };
+  const sciFi = () => {
+    axios
+      .get(
+        `${process.env.REACT_APP_BASE_URL}/now_playing?api_key=${process.env.REACT_APP_API_KEY}`
+      )
+      .then((res) => {
+        setMovieData(res.data);
+        setIsLoading(false);
+      })
+      .catch((err) => console.log(err.message));
+  };
+  const family = () => {
+    axios
+      .get(
+        `${process.env.REACT_APP_BASE_URL}/now_playing?api_key=${process.env.REACT_APP_API_KEY}`
+      )
+      .then((res) => {
+        setMovieData(res.data);
+        setIsLoading(false);
+      })
+      .catch((err) => console.log(err.message));
+  };
+  const horror = () => {
+    axios
+      .get(
+        `${process.env.REACT_APP_BASE_URL}/now_playing?api_key=${process.env.REACT_APP_API_KEY}`
+      )
+      .then((res) => {
+        setMovieData(res.data);
+        setIsLoading(false);
+      })
+      .catch((err) => console.log(err.message));
+  };
+
+  const handleClick = (key) => {
+    setBtnClicked(key);
+    console.log(key);
+    if (key === 'new_release') {
+      newRelease();
+    } else if (key === 'upcoming') {
+      upcoming();
+    } else if (key === 'action') {
+      action();
+    } else if (key === 'comedy') {
+      comedy();
+    } else if (key === 'crime') {
+      crime();
+    } else if (key === 'drama') {
+      drama();
+    } else if (key === 'thriller') {
+      thriller();
+    } else if (key === 'sci_fi') {
+      sciFi();
+    } else if (key === 'family') {
+      family();
+    } else if (key === 'horror') {
+      horror();
+    }
   };
 
   return (
     <div>
       <div>
         <div style={{ position: 'fixed', width: '100%', top: 0, zIndex: 1 }}>
-          <nav className="nav_font navbar navbar-expand-lg navbar-light bg-light">
-            <a className="navbar-brand p-0" href="#/">
-              Cinibuzz
-            </a>
-            <button
-              className="navbar-toggler"
-              type="button"
-              data-toggle="collapse"
-              data-target="#navbarText"
-              aria-controls="navbarText"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span className="navbar-toggler-icon"></span>
-            </button>
-            <div className="collapse navbar-collapse" id="navbarText">
-              <ul
-                className="navbar-nav ml-auto mr-3"
-                style={{ fontSize: '18px' }}
-              >
-                <li className="nav-item ml-1">
-                  <a className="nav-link" href="#/">
-                    Movies
-                  </a>
-                </li>
-                <li className="nav-item ml-1">
-                  <a className="nav-link" href="#/">
-                    TV Shows
-                  </a>
-                </li>
-                <li className="nav-item ml-1">
-                  <a className="nav-link" href="#/">
-                    Kids
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </nav>
+          <Navbar />
         </div>
         <div className="container search">
           <p className="search_title">Find perfect movie for evening</p>
@@ -98,7 +245,15 @@ function Homepage() {
           </div>
         </div>
       </div>
-      <MovieContainer searchData={searchData} />
+      <MovieContainer
+        handleClick={handleClick}
+        btnClicked={btnClicked}
+        isLoading={isLoading}
+        setIsLoading={setIsLoading}
+        movieData={movieData}
+        catagories={catagories}
+        newRelease={newRelease}
+      />
     </div>
   );
 }
