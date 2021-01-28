@@ -1,8 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Search from '../../assets/search.svg';
 import MovieContainer from '../Movie/MovieContainer';
+import axios from 'axios';
 
 function Homepage() {
+  const [inputChange, setInputChange] = useState('');
+  const [searchData, setSearchData] = useState({});
+
+  const handleSearch = () => {
+    console.log('searched');
+    axios
+      .get(
+        `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&query=${inputChange}`
+      )
+      .then((res) => setSearchData(res.data))
+      .catch((err) => console.log(err));
+  };
+
   return (
     <div>
       <div>
@@ -66,6 +80,7 @@ function Homepage() {
                 aria-label="Username"
                 aria-describedby="addon-wrapping"
                 style={{ boxShadow: 'none' }}
+                onChange={(e) => setInputChange(e.target.value)}
               />
             </div>
             <button
@@ -76,13 +91,14 @@ function Homepage() {
                 padding: '0 20px',
                 boxShadow: 'none',
               }}
+              onClick={handleSearch}
             >
               SEARCH
             </button>
           </div>
         </div>
       </div>
-      <MovieContainer />
+      <MovieContainer searchData={searchData} />
     </div>
   );
 }

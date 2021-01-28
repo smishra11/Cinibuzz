@@ -31,6 +31,16 @@ function MovieList(props) {
                   />
                 </div>
               </div>
+              <div
+                style={{
+                  fontSize: '13px',
+                  fontWeight: 'bold',
+                  marginTop: '7px',
+                }}
+              >
+                {res.original_title}
+              </div>
+              <div style={{ fontSize: '11px' }}>{res.release_date}</div>
             </div>
           ))}
       </div>

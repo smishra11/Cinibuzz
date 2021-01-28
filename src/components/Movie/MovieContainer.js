@@ -3,7 +3,7 @@ import MovieList from './MovieList';
 import axios from 'axios';
 import Spinner from '../common/spinner1.gif';
 
-function MovieContainer() {
+function MovieContainer(props) {
   const [btnClicked, setBtnClicked] = useState('new_release');
   const [movieData, setMovieData] = useState({});
   const [isLoading, setIsLoading] = useState(false);
