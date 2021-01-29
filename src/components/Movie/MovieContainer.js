@@ -8,10 +8,52 @@ function MovieContainer(props) {
     btnClicked,
     isLoading,
     movieData,
-    catagories,
     setIsLoading,
     newRelease,
   } = props;
+
+  const catagories = [
+    {
+      key: 'new_release',
+      value: 'New Release',
+    },
+    {
+      key: 'upcoming',
+      value: 'Upcoming',
+    },
+    {
+      key: 'action',
+      value: 'Action',
+    },
+    {
+      key: 'comedy',
+      value: 'Comedy',
+    },
+    {
+      key: 'crime',
+      value: 'Crime',
+    },
+    {
+      key: 'drama',
+      value: 'Drama',
+    },
+    {
+      key: 'thriller',
+      value: 'Thriller',
+    },
+    {
+      key: 'sci_fi',
+      value: 'Sci-Fi',
+    },
+    {
+      key: 'family',
+      value: 'Family',
+    },
+    {
+      key: 'horror',
+      value: 'Horror',
+    },
+  ];
 
   useEffect(() => {
     const defaultData = async () => await newRelease();
