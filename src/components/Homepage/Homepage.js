@@ -3,23 +3,29 @@ import Search from '../../assets/search.svg';
 import MovieContainer from '../Movie/MovieContainer';
 import axios from 'axios';
 import Navbar from '../common/Navbar';
+import { getGenreId } from '../../utils/Helper';
 
 function Homepage() {
   const [inputChange, setInputChange] = useState('');
   const [btnClicked, setBtnClicked] = useState('new_release');
-  const [movieData, setMovieData] = useState({});
+  const [movieData, setMovieData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  // const [isSearching, setIsSearching] = useState(false);
 
   const handleSearch = () => {
+    // setIsSearching(true);
     axios
       .get(
         `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&query=${inputChange}`
       )
       .then((res) => {
-        setMovieData(res.data);
+        setMovieData(res.data.results);
         setIsLoading(false);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        // setIsSearching(false);
+      });
   };
 
   const newRelease = () => {
@@ -28,7 +34,8 @@ function Homepage() {
         `${process.env.REACT_APP_BASE_URL}/now_playing?api_key=${process.env.REACT_APP_API_KEY}`
       )
       .then((res) => {
-        setMovieData(res.data);
+        setMovieData(res.data.results);
+        console.log(res.data);
         setIsLoading(false);
       })
       .catch((err) => console.log(err.message));
@@ -39,7 +46,7 @@ function Homepage() {
         `${process.env.REACT_APP_BASE_URL}/upcoming?api_key=${process.env.REACT_APP_API_KEY}`
       )
       .then((res) => {
-        setMovieData(res.data);
+        setMovieData(res.data.results);
         setIsLoading(false);
       })
       .catch((err) => console.log(err.message));
@@ -50,7 +57,14 @@ function Homepage() {
         `${process.env.REACT_APP_BASE_URL}/now_playing?api_key=${process.env.REACT_APP_API_KEY}`
       )
       .then((res) => {
-        setMovieData(res.data);
+        let genId = getGenreId('action')[0];
+        setMovieData(
+          res.data.results.filter((item) => {
+            if (item.genre_ids.includes(genId.id)) {
+              return item;
+            }
+          })
+        );
         setIsLoading(false);
       })
       .catch((err) => console.log(err.message));
@@ -61,7 +75,14 @@ function Homepage() {
         `${process.env.REACT_APP_BASE_URL}/now_playing?api_key=${process.env.REACT_APP_API_KEY}`
       )
       .then((res) => {
-        setMovieData(res.data);
+        let genId = getGenreId('comedy')[0];
+        setMovieData(
+          res.data.results.filter((item) => {
+            if (item.genre_ids.includes(genId.id)) {
+              return item;
+            }
+          })
+        );
         setIsLoading(false);
       })
       .catch((err) => console.log(err.message));
@@ -72,7 +93,14 @@ function Homepage() {
         `${process.env.REACT_APP_BASE_URL}/now_playing?api_key=${process.env.REACT_APP_API_KEY}`
       )
       .then((res) => {
-        setMovieData(res.data);
+        let genId = getGenreId('crime')[0];
+        setMovieData(
+          res.data.results.filter((item) => {
+            if (item.genre_ids.includes(genId.id)) {
+              return item;
+            }
+          })
+        );
         setIsLoading(false);
       })
       .catch((err) => console.log(err.message));
@@ -83,7 +111,14 @@ function Homepage() {
         `${process.env.REACT_APP_BASE_URL}/now_playing?api_key=${process.env.REACT_APP_API_KEY}`
       )
       .then((res) => {
-        setMovieData(res.data);
+        let genId = getGenreId('drama')[0];
+        setMovieData(
+          res.data.results.filter((item) => {
+            if (item.genre_ids.includes(genId.id)) {
+              return item;
+            }
+          })
+        );
         setIsLoading(false);
       })
       .catch((err) => console.log(err.message));
@@ -94,7 +129,14 @@ function Homepage() {
         `${process.env.REACT_APP_BASE_URL}/now_playing?api_key=${process.env.REACT_APP_API_KEY}`
       )
       .then((res) => {
-        setMovieData(res.data);
+        let genId = getGenreId('thriller')[0];
+        setMovieData(
+          res.data.results.filter((item) => {
+            if (item.genre_ids.includes(genId.id)) {
+              return item;
+            }
+          })
+        );
         setIsLoading(false);
       })
       .catch((err) => console.log(err.message));
@@ -105,7 +147,14 @@ function Homepage() {
         `${process.env.REACT_APP_BASE_URL}/now_playing?api_key=${process.env.REACT_APP_API_KEY}`
       )
       .then((res) => {
-        setMovieData(res.data);
+        let genId = getGenreId('science fiction')[0];
+        setMovieData(
+          res.data.results.filter((item) => {
+            if (item.genre_ids.includes(genId.id)) {
+              return item;
+            }
+          })
+        );
         setIsLoading(false);
       })
       .catch((err) => console.log(err.message));
@@ -116,7 +165,14 @@ function Homepage() {
         `${process.env.REACT_APP_BASE_URL}/now_playing?api_key=${process.env.REACT_APP_API_KEY}`
       )
       .then((res) => {
-        setMovieData(res.data);
+        let genId = getGenreId('family')[0];
+        setMovieData(
+          res.data.results.filter((item) => {
+            if (item.genre_ids.includes(genId.id)) {
+              return item;
+            }
+          })
+        );
         setIsLoading(false);
       })
       .catch((err) => console.log(err.message));
@@ -127,7 +183,14 @@ function Homepage() {
         `${process.env.REACT_APP_BASE_URL}/now_playing?api_key=${process.env.REACT_APP_API_KEY}`
       )
       .then((res) => {
-        setMovieData(res.data);
+        let genId = getGenreId('horror')[0];
+        setMovieData(
+          res.data.results.filter((item) => {
+            if (item.genre_ids.includes(genId.id)) {
+              return item;
+            }
+          })
+        );
         setIsLoading(false);
       })
       .catch((err) => console.log(err.message));
@@ -210,6 +273,8 @@ function Homepage() {
         setIsLoading={setIsLoading}
         movieData={movieData}
         newRelease={newRelease}
+        // isSearching={isSearching}
+        // inputChange={inputChange}
       />
     </div>
   );

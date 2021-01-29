@@ -2,7 +2,7 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 
 function MovieList(props) {
-  const { results } = props.movieData;
+  const { movieData } = props;
   const history = useHistory();
 
   const handleMovieList = (id) => {
@@ -12,9 +12,9 @@ function MovieList(props) {
   return (
     <div className="container mt-3">
       <div className="row">
-        {results &&
-          results.length &&
-          results.map((res) => (
+        {movieData &&
+          movieData.length &&
+          movieData.map((res) => (
             <div
               className="col-sm-2 mb-4"
               key={res.id}

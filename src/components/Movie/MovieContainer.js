@@ -10,6 +10,8 @@ function MovieContainer(props) {
     movieData,
     setIsLoading,
     newRelease,
+    // isSearching,
+    // inputChange,
   } = props;
 
   const catagories = [
@@ -79,6 +81,29 @@ function MovieContainer(props) {
             </button>
           ))}
         </div>
+        {/* {isSearching ? (
+          <div>
+            <h4>Showing results for : {inputChange}</h4>
+          </div>
+        ) : (
+          <div>
+            <h4 className="container_title">Browse movies by catagory</h4>
+            <div className="btn-group mr-auto d-flex mt-3" role="group">
+              {catagories.map((catagory) => (
+                <button
+                  type="button"
+                  className={`btn ${
+                    btnClicked === catagory.key ? 'active_btn' : ''
+                  }`}
+                  key={catagory.key}
+                  onClick={() => handleClick(catagory.key)}
+                >
+                  {catagory.value}
+                </button>
+              ))}
+            </div>
+          </div>
+        )} */}
       </div>
       <div>
         {isLoading ? (
