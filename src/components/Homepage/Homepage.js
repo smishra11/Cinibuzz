@@ -35,7 +35,7 @@ function Homepage() {
       )
       .then((res) => {
         setMovieData(res.data.results);
-        console.log(res.data);
+        //console.log(res.data);
         setIsLoading(false);
       })
       .catch((err) => console.log(err.message));
